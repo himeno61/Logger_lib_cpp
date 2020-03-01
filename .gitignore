@@ -1,0 +1,9 @@
+**/build/CMakeFiles
+**/build/tests
+**/build/cmake_install.cmake
+**/build/CMakeCache.txt
+**/build/CTestTestfile.cmake
+**/build/logger_lib.cbp
+**/build/Makefile
+# Project exclude paths
+/build/
