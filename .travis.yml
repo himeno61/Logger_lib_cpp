@@ -13,4 +13,4 @@ script:
   - export CXX=g++-7
   - cmake --version
   - cmake CMakeLists.txt
-  - cmake  --build . --target neat
+  - cmake  --build . --target logger_lib
