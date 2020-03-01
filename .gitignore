@@ -6,4 +6,5 @@
 **/build/logger_lib.cbp
 **/build/Makefile
 # Project exclude paths
-/build/
+**/.idea/
+
