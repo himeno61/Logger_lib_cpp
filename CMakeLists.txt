@@ -9,3 +9,4 @@ add_library(logger_lib ${SOURCE_FILES})
 
 enable_testing()
 ADD_SUBDIRECTORY(tests)
+

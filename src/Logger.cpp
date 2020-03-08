@@ -9,7 +9,8 @@
 
 
 void Logger::error(const std::string &message) {
-
+    if (*ERROR >= loggerLevel)
+        createLogEvent(WARN, std::move(message));
 }
 
 void Logger::warn(std::string message) {
@@ -30,15 +31,15 @@ void Logger::debug(std::string message) {
 void Logger::createLogEvent(Level *level, std::string message) {
     auto *loggingMessage = new LoggingMessage(std::move(message), loggerName, level);
     std::vector<BaseAppender *> vector = config->getAllAppenders();
-    for ( auto &i : vector ) {
+    for (auto &i : vector) {
         i->append(loggingMessage);
     }
 }
 
-Logger::Logger(const std::string &loggerName) {
-    this->loggerName = loggerName;
+Logger::Logger( const std::string &name) : loggerName(name) {
     config = ConfigFactory::getConfig();
     loggerLevel = config->getLevel();
 }
+
 
 
