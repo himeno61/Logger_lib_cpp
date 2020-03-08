@@ -8,21 +8,27 @@
 
 #include "Level.h"
 #include "config/BaseConfig.h"
+#include "config/ConfigFactory.h"
 
 class Logger {
 
 public:
-    void error(const std::string& message);
+    void error(const std::string &message);
+
     void warn(std::string message);
+
     void info(std::string message);
+
     void debug(std::string message);
-    void log(Level& level, std::string message);
-    void createLogEvent(Level level,std::string message);
+
+    void log(Level &level, std::string message);
+
+    void createLogEvent(Level *level, std::string message);
 
 private:
-    Level loggerLevel;
+    Level *loggerLevel;
     std::string loggerName;
-    BaseConfig* config;
+    BaseConfig *config;
 
 public:
     Logger(const std::string &loggerName);

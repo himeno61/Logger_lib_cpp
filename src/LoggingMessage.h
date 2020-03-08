@@ -14,18 +14,18 @@ private:
     std::time_t timeStamp;
     std::string message;
     std::string sourceOfMessage;
-    Level levelOfMessage;
+    Level *levelOfMessage;
 
 public:
 
 
-    LoggingMessage(std::string message, std::string sourceOfMessage, Level levelOfMessage);
+    LoggingMessage(std::string message, std::string sourceOfMessage, Level *levelOfMessage);
 
     time_t getTimeStamp() const;
 
     std::string getMessage() const;
 
-    Level getLevelOfMessage() const;
+    Level *getLevelOfMessage() const;
 
     std::string getSourceOfMessage() const {
         return sourceOfMessage;

@@ -5,7 +5,7 @@
 #include "FileAppender.h"
 
 
-void FileAppender::append(LoggingMessage message) {
+void FileAppender::append(LoggingMessage* message) {
 
 }
 

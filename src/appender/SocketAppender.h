@@ -10,10 +10,9 @@
 
 class SocketAppender : public BaseAppender {
 public:
-    void append(LoggingMessage message) override;
+    void append(LoggingMessage *message) override;
 
     std::string getName() override;
-
 };
 
 

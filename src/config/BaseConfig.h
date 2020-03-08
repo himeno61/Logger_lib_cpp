@@ -20,11 +20,17 @@ public:
         level = INFO;
     }
 
+    Level *getLevel() const;
+
     std::vector<BaseAppender *> getAllAppenders();
 };
 
 std::vector<BaseAppender *> BaseConfig::getAllAppenders() {
     return appendersVector;
+}
+
+Level *BaseConfig::getLevel() const {
+    return level;
 }
 
 

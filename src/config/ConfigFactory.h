@@ -9,8 +9,8 @@
 #include "BaseConfig.h"
 
 class ConfigFactory {
-private:
-    static std::string configfilePath;
+//private:
+//    static std::string configfilePath;
 public:
     static BaseConfig * getConfig();
 

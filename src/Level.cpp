@@ -5,7 +5,7 @@
 #include "Level.h"
 
 
-Level * Level::toLevel(int val) {
+Level *Level::toLevel(int val) {
     switch (val) {
         case INT8_MAX:
             return OFF;
@@ -55,6 +55,6 @@ int Level::getSyslogEquivalent() {
 }
 
 
-bool Level::operator>=(Level &l) {
-    return level >= l.getLevel();
+bool Level::operator>=(Level *l) {
+    return level >= l->getLevel();
 }

@@ -4,7 +4,7 @@
 
 #include "SocketAppender.h"
 
-void SocketAppender::append(LoggingMessage message) {
+void SocketAppender::append(LoggingMessage* message) {
 
 }
 

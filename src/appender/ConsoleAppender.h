@@ -6,11 +6,14 @@
 #define LOGGER_LIB_CONSOLEAPPENDER_H
 
 
+#include <mutex>
 #include "BaseAppender.h"
 
 class ConsoleAppender: public BaseAppender {
+private:
+    static std::mutex mtx;
 public:
-    void append(LoggingMessage message) override;
+    void append(LoggingMessage* message) override;
 
     std::string getName() override;
 

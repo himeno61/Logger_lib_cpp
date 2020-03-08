@@ -19,7 +19,7 @@
 
 class Layout {
 public:
-    static std::string format(LoggingMessage &message);
+    static std::string format(LoggingMessage *message);
 };
 
 #endif //LOGGER_LIB_LAYOUT_H

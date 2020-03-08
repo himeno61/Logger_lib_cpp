@@ -29,7 +29,7 @@ public:
 
     static Level *toLevel(const std::string &val);
 
-    bool operator>=(Level &level);
+    bool operator>=(Level *level);
 
     int getLevel();
 

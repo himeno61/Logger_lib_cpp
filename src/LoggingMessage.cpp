@@ -8,8 +8,9 @@
 
 
 LoggingMessage::LoggingMessage(std::string message, std::string sourceOfMessage,
-                               Level levelOfMessage) : message(std::move(message)), sourceOfMessage(std::move(sourceOfMessage)),
-                                                              levelOfMessage(std::move(levelOfMessage)) {
+                               Level *level) : message(std::move(message)),
+                                               sourceOfMessage(std::move(sourceOfMessage)) {
+    levelOfMessage = level;
     timeStamp = std::time(nullptr);
 }
 
@@ -21,6 +22,6 @@ std::string LoggingMessage::getMessage() const {
     return message;
 }
 
-Level LoggingMessage::getLevelOfMessage() const {
+Level *LoggingMessage::getLevelOfMessage() const {
     return levelOfMessage;
 }

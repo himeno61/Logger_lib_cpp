@@ -13,7 +13,7 @@ private:
     std::string name;
 
 public:
-    virtual void append(LoggingMessage message) = 0;
+    virtual void append(LoggingMessage* message) = 0;
 
     virtual std::string getName() = 0;
 
