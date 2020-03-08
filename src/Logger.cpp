@@ -7,32 +7,33 @@
 
 #include <utility>
 
-void Logger::error(std::string message) {
+void Logger::error(const std::string &message) {
 
 }
 
 void Logger::warn(std::string message) {
-    if (WARN->isGreaterOrEqual(loggerLevel))
+    if (*WARN >= loggerLevel)
         createLogEvent((const Level &) WARN, std::move(message));
 }
 
 void Logger::info(std::string message) {
-    if (INFO->isGreaterOrEqual(loggerLevel))
+    if (*INFO >= loggerLevel)
         createLogEvent((const Level &) INFO, std::move(message));
 }
 
 void Logger::debug(std::string message) {
-    if (DEBUG->isGreaterOrEqual(loggerLevel))
+    if (*DEBUG >= loggerLevel)
         createLogEvent((const Level &) DEBUG, std::move(message));
 }
 
-void Logger::log(Level level, std::string message) {
-    if(level.isGreaterOrEqual(loggerLevel))
-        createLogEvent(level, message);
+void Logger::log(Level &level, std::string message) {
+    if (level >= loggerLevel)
+        createLogEvent(level, std::move(message));
 }
 
 void Logger::createLogEvent(Level level, std::string message) {
-    LoggingMessage *loggingMessage = new LoggingMessage(level, message);
+    auto *loggingMessage = new LoggingMessage(std::move(message), loggerName, std::move(level));
+
 }
 
 

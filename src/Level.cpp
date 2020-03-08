@@ -5,55 +5,56 @@
 #include "Level.h"
 
 
-Level Level::toLevel(int val) {
+Level * Level::toLevel(int val) {
     switch (val) {
         case INT8_MAX:
-            return (const Level &) OFF;
+            return OFF;
         case ERROR_INT:
-            return (const Level &) ERROR;
+            return ERROR;
         case WARN_INT:
-            return (const Level &) WARN;
+            return WARN;
         case INFO_INT:
-            return (const Level &) INFO;
+            return INFO;
         case DEBUG_INT:
-            return (const Level &) DEBUG;
+            return DEBUG;
         case ALL_INT:
-            return (const Level &) ALL;
+            return ALL;
         default:
-            return (const Level &) ALL;
+            return ALL;
     }
 }
 
-Level Level::toLevel(std::string val) {
+Level *Level::toLevel(const std::string &val) {
     if (val.empty())
-        return (const Level &) DEBUG;
+        return DEBUG;
     if (val == "OFF")
-        return (const Level &) OFF;
+        return OFF;
     if (val == "ERROR")
-        return (const Level &) ERROR;
+        return ERROR;
     if (val == "WARN")
-        return (const Level &) WARN;
+        return WARN;
     if (val == "INFO")
-        return (const Level &) INFO;
+        return INFO;
     if (val == "DEBUG")
-        return (const Level &) DEBUG;
-    if (val =="ALL")
-        return (const Level &) ALL;
-    return (const Level &) DEBUG;
+        return DEBUG;
+    if (val == "ALL")
+        return ALL;
+    return DEBUG;
 }
 
-int Level::getLevel() const {
+int Level::getLevel() {
     return level;
 }
 
-const std::string &Level::getLevelStr() const {
+std::string Level::getLevelStr() {
     return levelStr;
 }
 
-int Level::getSyslogEquivalent() const {
+int Level::getSyslogEquivalent() {
     return syslogEquivalent;
 }
 
-bool Level::isGreaterOrEqual(Level l) const {
+
+bool Level::operator>=(Level &l) {
     return level >= l.getLevel();
 }

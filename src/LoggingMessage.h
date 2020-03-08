@@ -11,14 +11,26 @@
 
 class LoggingMessage {
 private:
-    std::time_t timeStamp ;
-    Level levelOfMessage;
+    std::time_t timeStamp;
     std::string message;
+    std::string sourceOfMessage;
+    Level levelOfMessage;
+
 public:
-    LoggingMessage(Level levelOfMessage, std::string message);
 
+
+    LoggingMessage(std::string message, std::string sourceOfMessage, Level levelOfMessage);
+
+    time_t getTimeStamp() const;
+
+    std::string getMessage() const;
+
+    Level getLevelOfMessage() const;
+
+    std::string getSourceOfMessage() const {
+        return sourceOfMessage;
+    }
 };
-
 
 
 #endif //LOGGER_LIB_LOGGINGMESSAGE_H

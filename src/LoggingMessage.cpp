@@ -6,7 +6,21 @@
 
 #include <utility>
 
-LoggingMessage::LoggingMessage(Level levelOfMessage, std::string message) : levelOfMessage(std::move(
-        levelOfMessage)), message(std::move(message)) {
+
+LoggingMessage::LoggingMessage(std::string message, std::string sourceOfMessage,
+                               Level levelOfMessage) : message(std::move(message)), sourceOfMessage(std::move(sourceOfMessage)),
+                                                              levelOfMessage(std::move(levelOfMessage)) {
     timeStamp = std::time(nullptr);
+}
+
+time_t LoggingMessage::getTimeStamp() const {
+    return timeStamp;
+}
+
+std::string LoggingMessage::getMessage() const {
+    return message;
+}
+
+Level LoggingMessage::getLevelOfMessage() const {
+    return levelOfMessage;
 }

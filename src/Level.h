@@ -19,32 +19,34 @@ static const int ALL_INT = INT_MIN;
 class Level {
 public:
     Level(int level, std::string levelStr, int syslogEquivalent);
+
 private:
     int level;
     std::string levelStr;
     int syslogEquivalent;
 public:
-    static Level toLevel(int val) ;
-    static Level toLevel(std::string val);
-    bool isGreaterOrEqual(Level level) const;
+    static Level *toLevel(int val);
 
-    int getLevel() const;
+    static Level *toLevel(const std::string &val);
 
-    const std::string &getLevelStr() const;
+    bool operator>=(Level &level);
 
-    int getSyslogEquivalent() const;
+    int getLevel();
+
+    std::string getLevelStr();
+
+    int getSyslogEquivalent();
 };
 
 Level::Level(int level, std::string levelStr, int syslogEquivalent) : level(level), levelStr(std::move(levelStr)),
                                                                       syslogEquivalent(syslogEquivalent) {}
 
 
-
-static const Level* OFF = new Level(OFF_INT, "OFF", 0);
-static const Level* ERROR = new Level(ERROR_INT, "ERROR", 3);
-static const Level *WARN = new Level(WARN_INT, "WARN", 4);
-static const Level* INFO = new Level(INFO_INT, "INFO", 6);
-static const Level* DEBUG = new Level(DEBUG_INT, "DEBUG", 7);
-static const Level* ALL = new Level(ALL_INT, "ALL", 7);
+static Level *OFF = new Level(OFF_INT, "OFF", 0);
+static Level *ERROR = new Level(ERROR_INT, "ERROR", 3);
+static Level *WARN = new Level(WARN_INT, "WARN", 4);
+static Level *INFO = new Level(INFO_INT, "INFO", 6);
+static Level *DEBUG = new Level(DEBUG_INT, "DEBUG", 7);
+static Level *ALL = new Level(ALL_INT, "ALL", 7);
 
 #endif //LOGGER_LIB_LEVEL_H
