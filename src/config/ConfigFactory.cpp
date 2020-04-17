@@ -6,11 +6,14 @@
 #include "ConfigFactory.h"
 #include "PropertiesConfig.h"
 
-BaseConfig * ConfigFactory::getConfig() {
-    std::string loggerConfigFile ="logger.propetries";
-    struct stat buffer{};
-    if(stat (loggerConfigFile.c_str(), &buffer) == 0)
-        return new PropertiesConfig(loggerConfigFile);
-    else
-        return new BaseConfig();
+BaseConfig *ConfigFactory::getConfig() {
+    if (!config) {
+        std::string loggerConfigFile = "logger.propetries";
+        struct stat buffer{};
+        if (stat(loggerConfigFile.c_str(), &buffer) == 0)
+            config = new PropertiesConfig(loggerConfigFile);
+        else
+            config = new BaseConfig();
+    }
+    return config;
 }

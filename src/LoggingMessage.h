@@ -17,8 +17,6 @@ private:
     Level *levelOfMessage;
 
 public:
-
-
     LoggingMessage(std::string message, std::string sourceOfMessage, Level *levelOfMessage);
 
     time_t getTimeStamp() const;

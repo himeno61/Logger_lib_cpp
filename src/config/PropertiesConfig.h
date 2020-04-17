@@ -6,12 +6,27 @@
 #define LOGGER_LIB_PROPERTIESCONFIG_H
 
 
+#include <list>
 #include "BaseConfig.h"
+
+
+#include <fstream>
+#include <map>
+#include "PropertiesConfig.h"
 
 class PropertiesConfig: public BaseConfig {
 
 public:
-    explicit PropertiesConfig(std::string fileName);
+    Level *getLevel() const override;
+    std::vector<BaseAppender *> getAllAppenders() override;
+    PropertiesConfig(std::string fileName);
+
+private:
+    std::map<std::string, std::string> getKeyValueMap(std::ifstream &infile);
+    void parseKeyValueMap(std::map<std::string, std::string> &map);
+    void parseSocketAppender(std::map<std::string, std::string> &map);
+    void parseFileAppender(std::map<std::string, std::string> &map);
+    void parseConsoleAppender(std::map<std::string, std::string> &map);
 };
 
 

@@ -9,12 +9,12 @@
 #include "BaseConfig.h"
 
 class ConfigFactory {
-//private:
-//    static std::string configfilePath;
+private:
+    static BaseConfig* config;
+
 public:
     static BaseConfig * getConfig();
 
 };
-
 
 #endif //LOGGER_LIB_CONFIGFACTORY_H

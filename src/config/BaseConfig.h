@@ -11,7 +11,7 @@
 #include "../appender/ConsoleAppender.h"
 
 class BaseConfig {
-private:
+protected:
     std::vector<BaseAppender *> appendersVector;
     Level *level;
 public:
@@ -20,9 +20,9 @@ public:
         level = INFO;
     }
 
-    Level *getLevel() const;
+    virtual Level *getLevel() const;
 
-    std::vector<BaseAppender *> getAllAppenders();
+    virtual std::vector<BaseAppender *> getAllAppenders();
 };
 
 std::vector<BaseAppender *> BaseConfig::getAllAppenders() {

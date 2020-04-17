@@ -15,20 +15,22 @@ class Logger {
 public:
     Logger(const std::string &loggerName);
 
+    Logger(const Logger &logger);
+
     void error(const std::string &message);
 
-    void warn(std::string message);
+    void warn(const std::string &message);
 
-    void info(std::string message);
+    void info(const std::string &message);
 
-    void debug(std::string message);
+    void debug(const std::string &message);
 
 private:
     Level *loggerLevel;
     std::string loggerName;
     BaseConfig *config;
 
-    void createLogEvent(Level *level, std::string message);
+    void createLogEvent(Level *level, const std::string &message);
 };
 
 
